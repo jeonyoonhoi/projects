@@ -1,0 +1,973 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>맨땅에코딩-웹툰 큐레이팅!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
+  <style>
+  body {
+      font: 400 15px/1.8 Lato, sans-serif;
+      color: #777;
+  }
+  h3, h4 {
+      margin: 10px 0 30px 0;
+      letter-spacing: 10px;      
+      font-size: 20px;
+      color: #111;
+  }
+  .container {
+      padding: 80px 120px;
+  }
+  .person {
+      border: 10px solid transparent;
+      margin-bottom: 25px;
+      width: 80%;
+      height: 80%;
+      opacity: 0.7;
+  }
+  .person:hover {
+      border-color: #f1f1f1;
+  }
+  .carousel-inner img {
+/*      -webkit-filter: grayscale(90%);
+      filter: grayscale(90%);  make all photos black and white */ 
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+  }
+  .carousel-caption h3 {
+      color: #fff !important;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+  }
+  .bg-1 {
+      background: #2d2d30;
+      color: #bdbdbd;
+  }
+  .bg-1 h3 {color: #fff;}
+  .bg-1 p {font-style: italic;}
+  .list-group-item:first-child {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+  }
+  .list-group-item:last-child {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+  }
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+  }
+  .thumbnail p {
+      margin-top: 15px;
+      color: #555;
+  }
+  .btn {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #f1f1f1;
+      border-radius: 0;
+      transition: .2s;
+  }
+  .btn:hover, .btn:focus {
+      border: 1px solid #333;
+      background-color: #fff;
+      color: #000;
+  }
+  .modal-header, h4, .close {
+      background-color: #333;
+      color: #fff !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-header, .modal-body {
+      padding: 40px 50px;
+  }
+  .nav-tabs li a {
+      color: #777;
+  }
+  #googleMap {
+      width: 100%;
+      height: 400px;
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+  }  
+  .navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #2d2d30;
+      border: 0;
+      font-size: 11px !important;
+      letter-spacing: 4px;
+      opacity: 0.9;
+  }
+  .navbar li a, .navbar .navbar-brand { 
+      color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+      color: #fff !important;
+  }
+  .navbar-nav li.active a {
+      color: #fff !important;
+      background-color: #29292c !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+  }
+  .open .dropdown-toggle {
+      color: #fff;
+      background-color: #555 !important;
+  }
+  .dropdown-menu li a {
+      color: #000 !important;
+  }
+  .dropdown-menu li a:hover {
+      background-color: red !important;
+  }
+  footer {
+      background-color: #2d2d30;
+      color: #f5f5f5;
+      padding: 32px;
+  }
+  footer a {
+      color: #f5f5f5;
+  }
+  footer a:hover {
+      color: #777;
+      text-decoration: none;
+  }  
+  .form-control {
+      border-radius: 0;
+  }
+  textarea {
+      resize: none;
+  }
+  </style>
+</head>
+
+
+<!-- 상단바 한줄로 된 메뉴 (WEBTOON부터~) -->
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#myPage">WEBTOON</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#myPage">오늘의웹툰</a></li>
+        <li><a href="#band">장르별웹툰</a></li>
+        <li><a href="#tour">베스트웹툰</a></li>
+        <li><a href="#contact">마이페이지</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+            <li><a href="#">메뉴3</a></li> 
+          </ul>
+        </li>
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- 움직이는 이미지(추천웹툰) -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="cd1.jpg" alt="New York" width="1200" height="700">
+        <div class="carousel-caption">
+          <h3>웹툰제목</h3>
+          <p>소개</p>
+        </div>      
+      </div>
+
+      <div class="item">
+        <img src="mev1.jpg" alt="Chicago" width="1200" height="700">
+        <div class="carousel-caption">
+          <h3>웹툰제목</h3>
+          <p>소개</p>
+        </div>      
+      </div>
+    
+      <div class="item">
+        <img src="bgo1.jpg" alt="Los Angeles" width="1200" height="700">
+        <div class="carousel-caption">
+          <h3>웹툰제목</h3>
+          <p>소개</p>
+        </div>      
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+<!-- 장르별 웹툰 추천 -->
+
+<div id="band" class="container text-center">
+  <h3>장르별 웹툰</h3>
+  <p><em>webtoon!</em></p>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">에피소드</a></li>
+  <li><a data-toggle="tab" href="#menu1">옴니버스</a></li>
+  <li><a data-toggle="tab" href="#menu2">스토리</a></li>
+  <li><a data-toggle="tab" href="#menu3">일상</a></li>
+  <li><a data-toggle="tab" href="#menu4">개그</a></li>
+  <li><a data-toggle="tab" href="#menu5">판타지</a></li>
+  <li><a data-toggle="tab" href="#menu6">액션</a></li>
+  <li><a data-toggle="tab" href="#menu7">드라마/순정</a></li>
+  <li><a data-toggle="tab" href="#menu8">감성</a></li>
+  <li><a data-toggle="tab" href="#menu9">스릴러</a></li>
+  <li><a data-toggle="tab" href="#menu10">시대극</a></li>
+  <li><a data-toggle="tab" href="#menu11">스포츠</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+
+    <img src='../img/g_1.jpg' style=width:100%;>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    <img src='../img/g_2.jpg' style=width:100%;>
+  </div>
+  <div id="menu2" class="tab-pane fade">
+
+    <img src='../img/g_3.jpg' style=width:100%;>
+  </div>
+    <div id="menu3" class="tab-pane fade">
+
+    <img src='../img/g_4.jpg' style=width:100%;>
+  </div>
+    <div id="menu4" class="tab-pane fade">
+
+    <img src='../img/g_5.jpg' style=width:100%;>
+  </div>
+    <div id="menu5" class="tab-pane fade">
+    <img src='../img/g_10.jpg' style=width:100%;>
+  </div>
+    <div id="menu6" class="tab-pane fade">
+
+    <img src='../img/g_7.jpg' style=width:100%;>
+  </div>
+    <div id="menu7" class="tab-pane fade">
+
+    <img src='../img/g_8.jpg' style=width:100%;>
+  </div>
+    <div id="menu8" class="tab-pane fade">
+
+    <img src='../img/g_9.jpg' style=width:100%;>
+  </div>
+    <div id="menu9" class="tab-pane fade">
+ 
+    <img src='../img/g_10.jpg' style=width:100%;>
+  </div>
+    <div id="menu10" class="tab-pane fade">
+
+    <img src='../img/g_11.jpg' style=width:100%;>
+  </div>
+    <div id="menu11" class="tab-pane fade">
+ 
+    <img src='../img/g_1.jpg' style=width:100%;>
+  </div>
+</div></div>
+
+<div id="band" class="container text-center">
+  <h3>장르별 웹툰</h3>
+  <p><em>webtoon!</em></p>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">에피소드</a></li>
+  <li><a data-toggle="tab" href="#menu1">옴니버스</a></li>
+  <li><a data-toggle="tab" href="#menu2">스토리</a></li>
+  <li><a data-toggle="tab" href="#menu3">일상</a></li>
+  <li><a data-toggle="tab" href="#menu4">개그</a></li>
+  <li><a data-toggle="tab" href="#menu5">판타지</a></li>
+  <li><a data-toggle="tab" href="#menu6">액션</a></li>
+  <li><a data-toggle="tab" href="#menu7">드라마/순정</a></li>
+  <li><a data-toggle="tab" href="#menu8">감성</a></li>
+  <li><a data-toggle="tab" href="#menu9">스릴러</a></li>
+  <li><a data-toggle="tab" href="#menu10">시대극</a></li>
+  <li><a data-toggle="tab" href="#menu11">스포츠</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+	<section>
+		<li>
+			<div class="thumb">
+				<a onclick="clickcr(this,'lst.img','650304','1',event)"
+					href="/webtoon/list.nhn?titleId=650304" title="슈퍼 시크릿"> <img
+					onerror="this.src='http://static.comic.naver.net/staticImages/COMICWEB/NAVER/img/common/blank.gif'"
+					src="http://thumb.comic.naver.net/webtoon/650304/thumbnail/title_thumbnail_20150323144620_t83x90.jpg"
+					width="83" height="90" title="슈퍼 시크릿" alt="슈퍼 시크릿"> <span
+					class="mask"></span>
+
+				</a>
+			</div>
+			<dl>
+				<dt>
+					<a onclick="clickcr(this,'lst.title','650304','1',event)"
+						href="/webtoon/list.nhn?titleId=650304" title="슈퍼 시크릿">슈퍼 시크릿</a>
+				</dt>
+				<dd class="desc">
+
+					<a href="#"
+						onclick="clickcr(this,'lst.artist','650304','1',event); return artistAction.viewArtist('650304', this);">이온</a>
+
+
+				</dd>
+				<dd class="date2">2017.08.28</dd>
+				<dd>
+
+
+
+					<div class="rating_type">
+						<span class="star"><em style="width: 99.84%">평점</em></span> <strong>9.98</strong>
+					</div>
+				</dd>
+				<dd class="more2">
+					<a onclick="clickcr(this,'lst.all','','1',event)"
+						href="/webtoon/list.nhn?titleId=650304">전체보기</a>
+				</dd>
+			</dl>
+		</li>
+
+		<li>
+			<div class="thumb">
+				<a onclick="clickcr(this,'lst.img','651673','2',event)"
+					href="/webtoon/list.nhn?titleId=651673" title="유미의 세포들"> <img
+					onerror="this.src='http://static.comic.naver.net/staticImages/COMICWEB/NAVER/img/common/blank.gif'"
+					src="http://thumb.comic.naver.net/webtoon/651673/thumbnail/thumbnail_IMAG10_57d95777-25e6-4127-9bba-3cf3b40965be.jpg"
+					width="83" height="90" title="유미의 세포들" alt="유미의 세포들"> <span
+					class="mask"></span> <span class="ico_cut">컷툰</span>
+				</a>
+			</div>
+			<dl>
+				<dt>
+					<a onclick="clickcr(this,'lst.title','651673','2',event)"
+						href="/webtoon/list.nhn?titleId=651673" title="유미의 세포들">유미의
+						세포들</a>
+				</dt>
+				<dd class="desc">
+
+					<a href="#"
+						onclick="clickcr(this,'lst.artist','651673','2',event); return artistAction.viewArtist('651673', this);">이동건</a>
+
+
+				</dd>
+				<dd class="date2">2017.09.01</dd>
+				<dd>
+
+
+
+					<div class="rating_type">
+						<span class="star"><em style="width: 99.77%">평점</em></span> <strong>9.98</strong>
+					</div>
+				</dd>
+				<dd class="more2">
+					<a onclick="clickcr(this,'lst.all','','2',event)"
+						href="/webtoon/list.nhn?titleId=651673">전체보기</a>
+				</dd>
+			</dl>
+		</li>
+
+		<li>
+			<div class="thumb">
+				<a onclick="clickcr(this,'lst.img','659934','3',event)"
+					href="/webtoon/list.nhn?titleId=659934" title="나는 귀머거리다"> <img
+					onerror="this.src='http://static.comic.naver.net/staticImages/COMICWEB/NAVER/img/common/blank.gif'"
+					src="http://thumb.comic.naver.net/webtoon/659934/thumbnail/title_thumbnail_20150729142305_t83x90.jpg"
+					width="83" height="90" title="나는 귀머거리다" alt="나는 귀머거리다"> <span
+					class="mask"></span> <img
+					src="http://static.comic.naver.net/staticImages/COMICWEB/NAVER/img/webtoon/ico_finish.gif"
+					width="29" height="15" alt="완결" class="finish">
+
+
+
+
+				</a>
+			</div>
+			<dl>
+				<dt>
+					<a onclick="clickcr(this,'lst.title','659934','3',event)"
+						href="/webtoon/list.nhn?titleId=659934" title="나는 귀머거리다">나는
+						귀머거리다</a>
+				</dt>
+				<dd class="desc">
+
+					<a href="#"
+						onclick="clickcr(this,'lst.artist','659934','3',event); return artistAction.viewArtist('659934', this);">라일라</a>
+
+
+				</dd>
+				<dd class="date2">2017.07.11</dd>
+				<dd>
+
+
+
+					<div class="rating_type">
+						<span class="star"><em style="width: 99.75%">평점</em></span> <strong>9.97</strong>
+					</div>
+				</dd>
+				<dd class="more2">
+					<a onclick="clickcr(this,'lst.all','','3',event)"
+						href="/webtoon/list.nhn?titleId=659934">전체보기</a>
+				</dd>
+			</dl>
+		</li>
+
+		<li>
+			<div class="thumb">
+				<a onclick="clickcr(this,'lst.img','687137','4',event)"
+					href="/webtoon/list.nhn?titleId=687137" title="구름의 이동속도"> <img
+					onerror="this.src='http://static.comic.naver.net/staticImages/COMICWEB/NAVER/img/common/blank.gif'"
+					src="http://thumb.comic.naver.net/webtoon/687137/thumbnail/title_thumbnail_20161018172728_t83x90.jpg"
+					width="83" height="90" title="구름의 이동속도" alt="구름의 이동속도"> <span
+					class="mask"></span>
+
+
+
+
+
+
+
+
+
+
+				</a>
+			</div>
+			<dl>
+				<dt>
+					<a onclick="clickcr(this,'lst.title','687137','4',event)"
+						href="/webtoon/list.nhn?titleId=687137" title="구름의 이동속도">구름의
+						이동속도</a>
+				</dt>
+				<dd class="desc">
+
+					<a href="#"
+						onclick="clickcr(this,'lst.artist','687137','4',event); return artistAction.viewArtist('687137', this);">김이랑</a>
+
+
+				</dd>
+				<dd class="date2">2017.09.01</dd>
+				<dd>
+
+
+
+					<div class="rating_type">
+						<span class="star"><em style="width: 99.75%">평점</em></span> <strong>9.97</strong>
+					</div>
+				</dd>
+				<dd class="more2">
+					<a onclick="clickcr(this,'lst.all','','4',event)"
+						href="/webtoon/list.nhn?titleId=687137">전체보기</a>
+				</dd>
+			</dl>
+		</li>
+
+		<li>
+			<div class="thumb">
+				<a onclick="clickcr(this,'lst.img','675554','5',event)"
+					href="/webtoon/list.nhn?titleId=675554" title="가우스전자 시즌3"> <img
+					onerror="this.src='http://static.comic.naver.net/staticImages/COMICWEB/NAVER/img/common/blank.gif'"
+					src="http://thumb.comic.naver.net/webtoon/675554/thumbnail/title_thumbnail_20160303181701_t83x90.jpg"
+					width="83" height="90" title="가우스전자 시즌3" alt="가우스전자 시즌3"> <span
+					class="mask"></span>
+
+
+
+
+
+
+
+
+
+
+				</a>
+			</div>
+			<dl>
+				<dt>
+					<a onclick="clickcr(this,'lst.title','675554','5',event)"
+						href="/webtoon/list.nhn?titleId=675554" title="가우스전자 시즌3">가우스전자
+						시...</a>
+				</dt>
+				<dd class="desc">
+
+					<a href="#"
+						onclick="clickcr(this,'lst.artist','675554','5',event); return artistAction.viewArtist('675554', this);">곽백수</a>
+
+
+				</dd>
+				<dd class="date2">2017.08.31</dd>
+				<dd>
+
+
+
+					<div class="rating_type">
+						<span class="star"><em style="width: 99.73%">평점</em></span> <strong>9.97</strong>
+					</div>
+				</dd>
+				<dd class="more2">
+					<a onclick="clickcr(this,'lst.all','','5',event)"
+						href="/webtoon/list.nhn?titleId=675554">전체보기</a>
+				</dd>
+			</dl>
+		</li>
+
+		<li>
+			<div class="thumb">
+				<a onclick="clickcr(this,'lst.img','697680','6',event)"
+					href="/webtoon/list.nhn?titleId=697680" title="선천적 얼간이들 (재)"> <img
+					onerror="this.src='http://static.comic.naver.net/staticImages/COMICWEB/NAVER/img/common/blank.gif'"
+					src="http://thumb.comic.naver.net/webtoon/697680/thumbnail/thumbnail_IMAG10_56fba87e-5e25-44d6-9cd7-b4c05e757a40.jpg"
+					width="83" height="90" title="선천적 얼간이들 (재)" alt="선천적 얼간이들 (재)">
+					<span class="mask"></span>
+
+
+
+
+
+
+
+
+
+
+				</a>
+			</div>
+			<dl>
+				<dt>
+					<a onclick="clickcr(this,'lst.title','697680','6',event)"
+						href="/webtoon/list.nhn?titleId=697680" title="선천적 얼간이들 (재)">선천적
+						얼간이...</a>
+				</dt>
+				<dd class="desc">
+
+					<a href="#"
+						onclick="clickcr(this,'lst.artist','697680','6',event); return artistAction.viewArtist('697680', this);">가스파드</a>
+
+
+				</dd>
+				<dd class="date2">2017.08.27</dd>
+				<dd>
+
+
+
+					<div class="rating_type">
+						<span class="star"><em style="width: 99.73%">평점</em></span> <strong>9.97</strong>
+					</div>
+				</dd>
+				<dd class="more2">
+					<a onclick="clickcr(this,'lst.all','','6',event)"
+						href="/webtoon/list.nhn?titleId=697680">전체보기</a>
+				</dd>
+			</dl>
+		</li>
+
+		<li>
+			<div class="thumb">
+				<a onclick="clickcr(this,'lst.img','654331','7',event)"
+					href="/webtoon/list.nhn?titleId=654331" title="썸남"> <img
+					onerror="this.src='http://static.comic.naver.net/staticImages/COMICWEB/NAVER/img/common/blank.gif'"
+					src="http://thumb.comic.naver.net/webtoon/654331/thumbnail/title_thumbnail_20150508221630_t83x90.jpg"
+					width="83" height="90" title="썸남" alt="썸남"> <span
+					class="mask"></span> <img
+					src="http://static.comic.naver.net/staticImages/COMICWEB/NAVER/img/webtoon/ico_finish.gif"
+					width="29" height="15" alt="완결" class="finish">
+
+				</a>
+			</div>
+			<dl>
+				<dt>
+					<a onclick="clickcr(this,'lst.title','654331','7',event)"
+						href="/webtoon/list.nhn?titleId=654331" title="썸남">썸남</a>
+				</dt>
+				<dd class="desc">
+
+					<a href="#"
+						onclick="clickcr(this,'lst.artist','654331','7',event); return artistAction.viewArtist('654331', this);">배철완</a>
+
+
+				</dd>
+				<dd class="date2">2016.09.28</dd>
+				<dd>
+
+
+
+					<div class="rating_type">
+						<span class="star"><em style="width: 99.72%">평점</em></span> <strong>9.97</strong>
+					</div>
+				</dd>
+				<dd class="more2">
+					<a onclick="clickcr(this,'lst.all','','7',event)"
+						href="/webtoon/list.nhn?titleId=654331">전체보기</a>
+				</dd>
+			</dl>
+		</li>
+
+		<li>
+			<div class="thumb">
+				<a onclick="clickcr(this,'lst.img','651664','8',event)"
+					href="/webtoon/list.nhn?titleId=651664" title="밥 먹고 갈래요?"> <img
+					onerror="this.src='http://static.comic.naver.net/staticImages/COMICWEB/NAVER/img/common/blank.gif'"
+					src="http://thumb.comic.naver.net/webtoon/651664/thumbnail/title_thumbnail_20150326153630_t83x90.jpg"
+					width="83" height="90" title="밥 먹고 갈래요?" alt="밥 먹고 갈래요?"> <span
+					class="mask"></span> <span class="ico_cut">컷툰</span>
+				</a>
+			</div>
+			<dl>
+				<dt>
+					<a onclick="clickcr(this,'lst.title','651664','8',event)"
+						href="/webtoon/list.nhn?titleId=651664" title="밥 먹고 갈래요?">밥 먹고
+						갈래...</a>
+				</dt>
+				<dd class="desc">
+
+					<a href="#"
+						onclick="clickcr(this,'lst.artist','651664','8',event); return artistAction.viewArtist('651664', this);">오묘</a>
+
+
+				</dd>
+				<dd class="date2">2017.08.31</dd>
+				<dd>
+
+
+
+					<div class="rating_type">
+						<span class="star"><em style="width: 99.71%">평점</em></span> <strong>9.97</strong>
+					</div>
+				</dd>
+				<dd class="more2">
+					<a onclick="clickcr(this,'lst.all','','8',event)"
+						href="/webtoon/list.nhn?titleId=651664">전체보기</a>
+				</dd>
+			</dl>
+		</li>
+
+		<li>
+			<div class="thumb">
+				<a onclick="clickcr(this,'lst.img','692510','9',event)"
+					href="/webtoon/list.nhn?titleId=692510" title="오늘도 형제는 평화롭다"> <img
+					onerror="this.src='http://static.comic.naver.net/staticImages/COMICWEB/NAVER/img/common/blank.gif'"
+					src="http://thumb.comic.naver.net/webtoon/692510/thumbnail/thumbnail_IMAG10_2d9d1b92-d6bf-432c-9788-273a3e2a5c6c.jpg"
+					width="83" height="90" title="오늘도 형제는 평화롭다" alt="오늘도 형제는 평화롭다">
+					<span class="mask"></span> <img
+					src="http://static.comic.naver.net/staticImages/COMICWEB/NAVER/img/webtoon/ico_finish.gif"
+					width="29" height="15" alt="완결" class="finish">
+
+
+
+
+				</a>
+			</div>
+			<dl>
+				<dt>
+					<a onclick="clickcr(this,'lst.title','692510','9',event)"
+						href="/webtoon/list.nhn?titleId=692510" title="오늘도 형제는 평화롭다">오늘도
+						형제는...</a>
+				</dt>
+				<dd class="desc">
+
+					<a href="#"
+						onclick="clickcr(this,'lst.artist','692510','9',event); return artistAction.viewArtist('692510', this);">GIMS</a>
+
+
+				</dd>
+				<dd class="date2">2017.08.12</dd>
+				<dd>
+
+
+
+					<div class="rating_type">
+						<span class="star"><em style="width: 99.71%">평점</em></span> <strong>9.97</strong>
+					</div>
+				</dd>
+				<dd class="more2">
+					<a onclick="clickcr(this,'lst.all','','9',event)"
+						href="/webtoon/list.nhn?titleId=692510">전체보기</a>
+				</dd>
+			</dl>
+		</li>
+</section>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    <img src='../img/g_2.jpg' style=width:100%;>
+  </div>
+  <div id="menu2" class="tab-pane fade">
+
+    <img src='../img/g_3.jpg' style=width:100%;>
+  </div>
+    <div id="menu3" class="tab-pane fade">
+
+    <img src='../img/g_4.jpg' style=width:100%;>
+  </div>
+    <div id="menu4" class="tab-pane fade">
+
+    <img src='../img/g_5.jpg' style=width:100%;>
+  </div>
+    <div id="menu5" class="tab-pane fade">
+    <img src='../img/g_10.jpg' style=width:100%;>
+  </div>
+    <div id="menu6" class="tab-pane fade">
+
+    <img src='../img/g_7.jpg' style=width:100%;>
+  </div>
+    <div id="menu7" class="tab-pane fade">
+
+    <img src='../img/g_8.jpg' style=width:100%;>
+  </div>
+    <div id="menu8" class="tab-pane fade">
+
+    <img src='../img/g_9.jpg' style=width:100%;>
+  </div>
+    <div id="menu9" class="tab-pane fade">
+ 
+    <img src='../img/g_10.jpg' style=width:100%;>
+  </div>
+    <div id="menu10" class="tab-pane fade">
+
+    <img src='../img/g_11.jpg' style=width:100%;>
+  </div>
+    <div id="menu11" class="tab-pane fade">
+ 
+    <img src='../img/g_1.jpg' style=width:100%;>
+  </div>
+</div></div>
+
+
+<!-- 베스트 도전 메뉴쪽-->
+
+<div id="tour" class="bg-1">
+  <div class="container">
+    <h3 class="text-center">베스트 도전</h3>
+    <p class="text-center">best challenge</p>
+    <ul class="list-group">
+      <li class="list-group-item">웹툰제목1 <span class="label label-danger">Best!</span></li>
+      <li class="list-group-item">웹툰제목2 <span class="label label-danger">Best!</span></li> 
+      <li class="list-group-item">웹툰제목3 텍스트형 <span class="badge">3</span></li> 
+    </ul>
+    
+    <div class="row text-center">
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="campus.jpg" alt="Paris" width="400" height="300">
+          <p><strong>웹툰제목</strong></p>
+          <p>2017.09.02</p>
+          <button class="btn" data-toggle="modal" data-target="#myModal">웹툰보기</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="campus.jpg" alt="New York" width="400" height="300">
+          <p><strong>웹툰제목</strong></p>
+          <p>2017.09.02</p>
+          <button class="btn" data-toggle="modal" data-target="#myModal">웹툰보기</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="campus.jpg" alt="San Francisco" width="400" height="300">
+          <p><strong>웹툰제목</strong></p>
+          <p>2017.09.02</p>
+          <button class="btn" data-toggle="modal" data-target="#myModal">웹툰보기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 베스트도전 쪽에서 웹툰보기 버튼 눌렀을 때 새창뜸(필요없을시 삭제) -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23 per person</label>
+              <input type="number" class="form-control" id="psw" placeholder="How many?">
+            </div>
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
+              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+            </div>
+              <button type="submit" class="btn btn-block">Pay 
+                <span class="glyphicon glyphicon-ok"></span>
+              </button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+            <span class="glyphicon glyphicon-remove"></span> Cancel
+          </button>
+          <p>Need <a href="#">help?</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 최근 본 웹툰  -->
+<div id="contact" class="container">
+  <h3 class="text-center">최근 본 웹툰</h3>
+  <p class="text-center"><em>We love our fans!</em></p>
+
+  <div class="row">
+    <div class="col-md-4">
+      <p>Fan? Drop a note.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span>Multicampus, Korea</p>
+      <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 </p>
+      <p><span class="glyphicon glyphicon-envelope"></span>Email: 맨땅에코딩@mail.com</p>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+      <br>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <button class="btn pull-right" type="submit">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 아직 미정인 메뉴 부분1 -->
+  <br>
+  <h3 class="text-center">아이디어 제보</h3>  
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">UI</a></li>
+    <li><a data-toggle="tab" href="#menu1">UX</a></li>
+    <li><a data-toggle="tab" href="#menu2">Coding</a></li>
+  </ul>
+
+
+<!-- 아직 미정인 메뉴 부분2 -->
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h2>Hello</h2>
+      <p>Hello, World!</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h2>맨땅에코딩</h2>
+      <p>아이고</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h2>테스트</h2>
+      <p>test</p>
+    </div>
+  </div>
+</div>
+
+<!-- 아직 미정인 메뉴부분3 -->
+<div id="googleMap"></div>
+<script>
+function myMap() {
+var myCenter = new google.maps.LatLng(41.878114, -87.629798);
+var mapProp = {center:myCenter, zoom:12, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+var marker = new google.maps.Marker({position:myCenter});
+marker.setMap(map);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+<!-- Footer (만든 사람 표시) -->
+<footer class="text-center">
+  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+  <p>Made in 맨땅에코딩</a></p> 
+</footer>
+
+
+
+
+<!-- 자바스크립트쪽  -->
+<script>
+$(document).ready(function(){
+  // Initialize Tooltip
+  $('[data-toggle="tooltip"]').tooltip(); 
+  
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+})
+</script>
+
+</body>
+</html>
